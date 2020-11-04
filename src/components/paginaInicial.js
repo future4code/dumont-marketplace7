@@ -38,15 +38,17 @@ class PaginaInicial extends React.Component {
   render() {
     return (
       <div>
-      <Head>
-        <ImagemLogo src={Logo} alt="Logo do Elo4" />
-        <Titulo>Seja muito bem vindo a Elo4 !!!</Titulo>
-        <button onClick={this.props.botaoFornecedor}>Fornecedor</button>
-      <button onClick={this.props.botaoCliente}>Cliente</button>
-      </Head>
-      
-      
-      
+        <Head id = "teste">
+          <logo>
+            <ImagemLogo src={Logo} alt="Logo do Elo4" />
+          </logo>
+          <Titulo>Seja muito bem vindo a Elo4 !!!</Titulo>
+          <div id ="botoes">
+            <button onClick={this.props.botaoFornecedor}>Fornecedor</button>
+            <button onClick={this.props.botaoCliente}>Cliente</button>
+          </div>
+        </Head>
+         
       </div>
     );
   }

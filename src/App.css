@@ -38,3 +38,15 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+
+#teste {
+  flex-direction: column;
+  justify-content: center;
+   /* align-items: center; */
+ 
+}
+
+#botoes {
+  flex-direction: row;
+}
