@@ -1,8 +1,9 @@
 import React from "react";
 import { TelaPrincipal } from "./components/TelaPrincipal";
+import  Navbar from "./components/Navbar"
 
 function App() {
-  return <TelaPrincipal />;
+  return <Navbar />;
 }
 
 export default App;
