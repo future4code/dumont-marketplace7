@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import Logo from "../img/Logo.png";
 
@@ -34,15 +34,22 @@ const ImagemLogo = styled.img`
   left: 43%;
 `;
 
-export class TelaPrincipal extends Component {
+class PaginaInicial extends React.Component {
   render() {
     return (
+      <div>
       <Head>
         <ImagemLogo src={Logo} alt="Logo do Elo4" />
         <Titulo>Seja muito bem vindo a Elo4 !!!</Titulo>
+        <button onClick={this.props.botaoFornecedor}>Fornecedor</button>
+      <button onClick={this.props.botaoCliente}>Cliente</button>
       </Head>
+      
+      
+      
+      </div>
     );
   }
 }
 
-export default TelaPrincipal;
+export default PaginaInicial;
