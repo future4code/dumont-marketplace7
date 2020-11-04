@@ -4,6 +4,9 @@ import './App.css';
 import PaginaCliente from './components/paginaCliente'
 import PaginaInicial from './components/paginaInicial'
 import PaginaFornecedor from './components/paginaFornecedor'
+import Navbar from './components/paginaCliente';
+import styled from 'styled-components'
+
 
 class App extends React.Component {
   state = {
@@ -24,7 +27,7 @@ class App extends React.Component {
         case "inicial":
           return <PaginaInicial botaoCliente={this.irParaCliente} botaoFornecedor={this.irParaFornecedor}/>
         case "cliente":
-          return <PaginaCliente />;
+          return <Navbar />;
         case "fornecedor":
           return <PaginaFornecedor />;
         default:
