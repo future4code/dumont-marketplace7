@@ -1,10 +1,8 @@
-import React from 'react'
-import { AppContainer } from './components/AppContainer'
+import React from "react";
+import { TelaPrincipal } from "./components/TelaPrincipal";
 
 function App() {
-	return (
-        <AppContainer />
-	)
+  return <TelaPrincipal />;
 }
 
-export default App
+export default App;
