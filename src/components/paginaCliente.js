@@ -3,26 +3,21 @@ import logo from '../img/Logo.png'
 import styled from 'styled-components'
 import { Button, Typography } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
-
+import Rodape from './Rodape'
 
 
 export default class Navbar extends Component {
     
     render() {
         return (
+            <div>
             <NavWrapper>
-                
                     <NavLogo src={logo} alt='Página Inicial' className="navbar-brand"/>
-                
                 <ul>
                     <li>
-
                             Produtos
-                        
                     </li>
                 </ul>
-
-
                 <SearchBar>
                         <SearchInput>
 
@@ -33,15 +28,12 @@ export default class Navbar extends Component {
                         </SearchBtn>
 
                 </SearchBar>
-                
-                
-            
                 <Button variant='contained' size='medium' color='primary'>
                     Ver carrinho
                 </Button>
-           
-
             </NavWrapper>
+            <Rodape />
+            </div>
         )
     }
 }

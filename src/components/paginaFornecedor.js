@@ -3,7 +3,7 @@ import logo from '../img/Logo.png'
 import styled from 'styled-components'
 import { Button, Typography } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
-
+import Rodape from './Rodape'
 
 
 export default class Navbar extends Component {
@@ -36,6 +36,7 @@ export default class Navbar extends Component {
                     
                    <h1>COMPONENTE AREA FORNECEDOR QUANDO ESTIVER PRONTO</h1> 
                     
+                    <Rodape />
          </div>               
         )
     

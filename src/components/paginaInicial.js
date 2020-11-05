@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "../img/Logo.png";
 import { Button, Typography } from '@material-ui/core'
+import Rodape from './Rodape'
 
 const Head = styled.header`
   display: flex;
@@ -38,18 +39,20 @@ class PaginaInicial extends React.Component {
     return (
       <div>
         <Head>
-        <ImagemLogo src={Logo} alt="Logo do Elo4" />
-       
+          <ImagemLogo src={Logo} alt="Logo do Elo4" />
+
         </Head>
         <Titulo>Seja muito bem vindo a Elo4 !!!</Titulo>
-<section>    
-<Button variant='contained' size='medium' color='primary' onClick={this.props.botaoFornecedor}>Fornecedor
-</Button>
-</section>
-<section>
-<Button variant='contained' size='medium' color='primary' onClick={this.props.botaoCliente}>Cliente
-</Button>                   
-</section> 
+        <section>
+          <Button variant='contained' size='medium' color='primary' onClick={this.props.botaoFornecedor}>Fornecedor
+        </Button>
+        </section>
+        <section>
+          <Button variant='contained' size='medium' color='primary' onClick={this.props.botaoCliente}>Cliente
+        </Button>
+        </section>
+        
+        <Rodape />
       </div>
     );
   }
