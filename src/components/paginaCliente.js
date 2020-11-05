@@ -7,6 +7,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import axios from 'axios'
 import Products from './Products';
 import { makeStyles } from '@material-ui/styles'
+import Rodape from "./Rodape"
+
 
 export default class PaginaCliente extends Component {
   render() {
@@ -48,7 +50,7 @@ export default class PaginaCliente extends Component {
 
         <Grid item xs={false} sm={2}/>
       </Grid>
-
+       <Rodape />
       </Grid>
     );
   }

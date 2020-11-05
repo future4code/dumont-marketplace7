@@ -4,6 +4,7 @@ import styled from "styled-components";
 // import { Button, Typography } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
+import Rodape from "./Rodape";
 
 const NavWrapper = styled.nav`
   display: flex;
@@ -227,6 +228,7 @@ export default class Navbar extends Component {
           </li>
         </ul>
         <div>{renderizaTodosProdutos}</div>
+        <Rodape />
       </div>
     );
   }
