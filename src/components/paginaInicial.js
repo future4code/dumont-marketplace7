@@ -15,7 +15,6 @@ export default class Navbar extends Component {
         </Button>
         </section>
         <section className='secao2'>
-        
         <Button className ='buttonEntrada'variant='contained' size='medium' color='primary' onClick={this.props.botaoCliente}>Cliente
         </Button>                   
         </section>

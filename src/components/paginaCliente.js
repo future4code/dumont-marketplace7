@@ -3,6 +3,7 @@ import logo from "../img/Logo.png";
 import styled from "styled-components";
 import { Button, Typography, Grid, IconButton } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+// import { Filters } from './components/filtro';
 import HomeIcon from '@material-ui/icons/Home';
 import axios from 'axios'
 import Products from './Products';
@@ -10,8 +11,10 @@ import { makeStyles } from '@material-ui/styles'
 import Rodape from "./Rodape"
 
 
+
 export default class PaginaCliente extends Component {
   render() {
+
     return (  
       <Grid container direction='column'>
       <NavWrapper>
@@ -117,6 +120,7 @@ const SearchBtn = styled.button`
   &:hover {
     cursor: pointer;
   }
+
 `;
 
 const Footer = styled.div `
@@ -128,3 +132,5 @@ const Footer = styled.div `
    color: white;
     padding-bottom: 10px;
 `
+`;
+
