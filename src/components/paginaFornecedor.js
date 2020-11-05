@@ -290,7 +290,6 @@ export default class Navbar extends Component {
           Cadastrar produto
         </Button>
 
-        <div>{renderizaTodosProdutos}</div>
 
         <Rodape />
       </div>
