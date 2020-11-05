@@ -132,5 +132,5 @@ const Footer = styled.div `
    color: white;
     padding-bottom: 10px;
 `
-`;
+
 
