@@ -4,7 +4,9 @@ import styled from "styled-components";
 // import { Button, Typography } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
+import { FilterNone } from "@material-ui/icons";
 import Rodape from "./Rodape";
+import { Button, Typography } from "@material-ui/core";
 
 const NavWrapper = styled.nav`
   display: flex;
@@ -29,10 +31,7 @@ const NavLogo = styled.img`
   width: 5vw;
   margin: 1.2rem;
 `;
-const SearchBar = styled.div`
-  display: flex;
-  width: 50%;
-`;
+
 const SearchInput = styled.input`
   border-radius: 5px;
   width: 100%;
@@ -48,43 +47,42 @@ const SearchBtn = styled.button`
     cursor: pointer;
   }
 `;
+const DivisaoProdutos = styled.div`
+  display: flex;
+  justify-content: space-around;
+  outline: none;
+`;
 
 export default class Navbar extends Component {
   state = {
-    postarProdutos: [],
+    pegarProdutos: [],
     nome: "",
     descricao: "",
-    preco: [],
+    preco: "",
     metodoPgto: "",
     categoria: "",
-    fotos: [],
-    numeroParcelas: [],
+    fotos: "",
+    numeroParcelas: "",
   };
 
   postarProdutos = () => {
     const body = {
       name: this.state.nome,
       description: this.state.descricao,
-      price: this.state.preco,
+      price: Number(this.state.preco),
       paymentMethod: this.state.metodoPgto,
       category: this.state.categoria,
       photos: this.state.fotos,
-      installments: this.state.numeroParcelas,
+      installments: Number(this.state.numeroParcelas),
     };
-
+    console.log(body);
     axios
       .post(
-        "https://us-central1-labenu-apis.cloudfunctions.net/eloFourOne/products",
-        body,
-        {
-          headers: {
-            Authorization: "vanessa-helena-dumont",
-          },
-        }
+        "https://us-central1-labenu-apis.cloudfunctions.net/eloFourOne/products/",
+        body
       )
       .then((res) => {
-        console.log("testando", res);
-
+        console.log("res", res.name);
         this.setState({ nome: "" });
         this.setState({ descricao: "" });
         this.setState({ preco: "" });
@@ -92,7 +90,6 @@ export default class Navbar extends Component {
         this.setState({ categoria: "" });
         this.setState({ fotos: "" });
         this.setState({ numeroParcelas: "" });
-        this.postarProdutos();
       })
       .catch((error) => {
         console.log(error.message);
@@ -127,107 +124,103 @@ export default class Navbar extends Component {
   };
 
   render() {
-    const renderizaTodosProdutos = this.state.postarProdutos.map((produtos) => {
-      return (
-        <p key={this.produtos.id}>
-          {this.produtos.name} {this.produtos.description}
-          {this.produtos.preco} {this.produtos.paymentMethod}{" "}
-          {this.produtos.category}
-          {this.produtos.photos} {this.produtos.installments}
-        </p>
-      );
-    });
-
-    const renderizaPlaylists = this.state.postarProdutos.map((data) => {
-      return <li key={data.id}>{data.name}</li>;
-    });
+    // console.log("asdasd", )
+    // const trazTodosProdutos = this.state.pegarProdutos.map((products) => {
+    //   return <p key={products.id}>{products.name} {products.description}
+    //   {products.price} {products.category} {products.photos} {products.installments}
+    //   </p>;
+    // });
     return (
       <div>
         <NavWrapper>
           <NavLogo src={logo} alt="Página Inicial" className="navbar-brand" />
 
           <ul>
-            <li>Produtos</li>
+            <li onClick={this.props.irParaCliente}>Produtos</li>
           </ul>
-          <SearchBar>
-            <SearchInput></SearchInput>
 
-            <SearchBtn>
-              <SearchIcon />
-            </SearchBtn>
-          </SearchBar>
         </NavWrapper>
 
-        <h1>
-          Seja bem vindo !! fique a vontade para colocar seus produtos no site.
-        </h1>
+        <h1>Cadastrar produtos</h1>
 
-        <ul>
-          <li>
-            Nome:{" "}
-            <input
-              placeholder="Digite o nome do produto"
-              value={this.state.nome}
-              onChange={this.onChangeNome}
-            />{" "}
-            <button onClick={this.postarProdutos}>Adicionar</button>
-          </li>
-          <li>
-            Descrição:{" "}
-            <input
-              placeholder="Digite a descrição do produto"
-              value={this.state.descricao}
-              onChange={this.onChangeDescricao}
-            />{" "}
-            <button>Adicionar</button>
-          </li>
-          <li>
-            Preço R$ :{" "}
-            <input
-              placeholder="Digite o preço do produto"
-              value={this.state.preco}
-              onChange={this.onChangePreco}
-            />{" "}
-            <button>Adicionar</button>
-          </li>
-          <li>
-            Método de pagamento:{" "}
-            <input
-              placeholder="Digite o método de pgto"
-              value={this.state.metodoPgto}
-              onChange={this.onChangeMetodoPgto}
-            />{" "}
-            <button>Adicionar</button>
-          </li>
-          <li>
-            Categoria :{" "}
-            <input
-              placeholder="Digite o nome da categoria"
-              value={this.state.categoria}
-              onChange={this.onChangeCategoria}
-            />{" "}
-            <button>Adicionar</button>
-          </li>
-          <li>
-            Fotos :{" "}
-            <input
-              placeholder="Ponha a url das fotos"
-              value={this.state.fotos}
-              onChange={this.onChangeFotos}
-            />{" "}
-            <button>Adicionar</button>
-          </li>
-          <li>
-            Número de parcelas :{" "}
-            <input
-              placeholder="Digite o número de parcelas"
-              value={this.state.numeroParcelas}
-              onChange={this.onChangeNumeroParcelas}
-            />{" "}
-            <button>Adicionar</button>
-          </li>
-        </ul>
-        <div>{renderizaTodosProdutos}</div>
+        <section className="secao3">
+          <ul>
+            <li>
+              <input
+                placeholder="Nome"
+                value={this.state.nome}
+                onChange={this.onChangeNome}
+              />
+            </li>
+
+            <li>
+              <input
+                placeholder="Descrição"
+                value={this.state.descricao}
+                onChange={this.onChangeDescricao}
+              />
+            </li>
+            <li>
+              <input
+                type="number"
+                placeholder="Preço"
+                value={this.state.preco}
+                onChange={this.onChangePreco}
+              />
+            </li>
+
+            <div className="selecionarPagamento">
+              <li>
+                <select value={this.state.metodoPgto} onChange={this.onChangeMetodoPgto} name="opcoes" id="select" placeholder="Opção Pagamento">
+                  <option>Selecionar</option>
+                  <option>Boleto</option>
+                  <option>Cartão</option>
+                </select>
+              </li>
+            </div>
+
+            <div className="selecionarCategoria">
+              <li>
+                <select value={this.state.categoria} onChange={this.onChangeCategoria} name="opcoes" id="select" placeholder="Categoria">
+                  <option>Selecionar</option>
+                  <option>Casa</option>
+                  <option>Jardim</option>
+                  <option>Festa</option>
+                </select>
+              </li>
+            </div>
+
+            <li>
+              <input
+                placeholder="Url das fotos"
+                value={this.state.fotos}
+                onChange={this.onChangeFotos}
+              />
+            </li>
+            <li>
+              <input
+                type="number"
+                size="20"
+                maxlength="50"
+                height="20px"
+                placeholder="Número de parcelas"
+                value={this.state.numeroParcelas}
+                onChange={this.onChangeNumeroParcelas}
+              />
+            </li>
+          </ul>
+        </section>
+
+        <Button
+          className="buttonCadastrar"
+          variant="contained"
+          size="medium"
+          color="primary"
+          onClick={this.props.botaoFornecedor}
+        >
+          Cadastrar produto
+        </Button>
+
         <Rodape />
       </div>
     );
