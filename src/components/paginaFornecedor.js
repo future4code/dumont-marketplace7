@@ -29,10 +29,7 @@ const NavLogo = styled.img`
   width: 5vw;
   margin: 1.2rem;
 `;
-const SearchBar = styled.div`
-  display: flex;
-  width: 50%;
-`;
+
 const SearchInput = styled.input`
   border-radius: 5px;
   width: 100%;
@@ -147,15 +144,9 @@ export default class Navbar extends Component {
           <NavLogo src={logo} alt="Página Inicial" className="navbar-brand" />
 
           <ul>
-            <li>Produtos</li>
+            <li onClick={this.props.irParaCliente}>Produtos</li>
           </ul>
-          <SearchBar>
-            <SearchInput></SearchInput>
 
-            <SearchBtn>
-              <SearchIcon />
-            </SearchBtn>
-          </SearchBar>
         </NavWrapper>
 
         <h1>
