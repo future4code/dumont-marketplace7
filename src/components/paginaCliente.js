@@ -3,6 +3,7 @@ import logo from "../img/Logo.png";
 import styled from "styled-components";
 import { Button, Typography } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+import Rodape from "./Rodape"
 
 export default class Navbar extends Component {
   render() {
@@ -25,6 +26,7 @@ export default class Navbar extends Component {
         <Button variant="contained" size="medium" color="primary">
           Ver carrinho
         </Button>
+      <Rodape />
       </NavWrapper>
     );
   }
