@@ -142,67 +142,7 @@ export default class Navbar extends Component {
         </NavWrapper>
 
         <h1>Cadastrar produtos</h1>
-        <DivisaoProdutos>
-          <ul>
-            <li>
-              Nome:{" "}
-              <input
-                placeholder="Digite o nome do produto"
-                value={this.state.nome}
-                onChange={this.onChangeNome}
-              />{" "}
-            </li>
-            <li>
-              Descrição:{" "}
-              <input
-                placeholder="Digite a descrição do produto"
-                value={this.state.descricao}
-                onChange={this.onChangeDescricao}
-              />{" "}
-            </li>
-            <li>
-              Preço R$ :{" "}
-              <input
-                placeholder="Digite o preço do produto"
-                value={this.state.preco}
-                onChange={this.onChangePreco}
-              />{" "}
-            </li>
-            <li>
-              Método de pagamento:{" "}
-              <input
-                placeholder="Digite o método de pgto"
-                value={this.state.metodoPgto}
-                onChange={this.onChangeMetodoPgto}
-              />{" "}
-            </li>
-            <li>
-              Categoria :{" "}
-              <input
-                placeholder="Digite o nome da categoria"
-                value={this.state.categoria}
-                onChange={this.onChangeCategoria}
-              />{" "}
-            </li>
-            <li>
-              Fotos :{" "}
-              <input
-                placeholder="Ponha a url das fotos"
-                value={this.state.fotos}
-                onChange={this.onChangeFotos}
-              />{" "}
-            </li>
-            <li>
-              Número de parcelas :{" "}
-              <input
-                placeholder="Digite o número de parcelas"
-                value={this.state.numeroParcelas}
-                onChange={this.onChangeNumeroParcelas}
-              />{" "}
-              <button onClick={this.postarProdutos}>Adicionar</button>
-            </li>
-          </ul>
-        </DivisaoProdutos>
+
         <section className="secao3">
           <ul>
             <li>
@@ -223,29 +163,29 @@ export default class Navbar extends Component {
             <li>
               <input
                 type="number"
-                placeholder="Valor"
+                placeholder="Preço"
                 value={this.state.preco}
                 onChange={this.onChangePreco}
-              />{" "}
+              />
             </li>
 
             <div className="selecionarPagamento">
               <li>
-                <select name="opcoes" id="select" placeholder="Opção Pagamento">
-                  <option value="">Selecionar</option>
-                  <option value="">Boleto</option>
-                  <option value="1">Cartão</option>
+                <select value={this.state.metodoPgto} onChange={this.onChangeMetodoPgto} name="opcoes" id="select" placeholder="Opção Pagamento">
+                  <option>Selecionar</option>
+                  <option>Boleto</option>
+                  <option>Cartão</option>
                 </select>
               </li>
             </div>
 
             <div className="selecionarCategoria">
               <li>
-                <select name="opcoes" id="select" placeholder="Categoria">
-                  <option value="">Selecionar</option>
-                  <option value="">Casa</option>
-                  <option value="1">Jardim</option>
-                  <option value="2">Festa</option>
+                <select value={this.state.categoria} onChange={this.onChangeCategoria} name="opcoes" id="select" placeholder="Categoria">
+                  <option>Selecionar</option>
+                  <option>Casa</option>
+                  <option>Jardim</option>
+                  <option>Festa</option>
                 </select>
               </li>
             </div>
@@ -280,8 +220,6 @@ export default class Navbar extends Component {
         >
           Cadastrar produto
         </Button>
-
-        <div>{renderizaTodosProdutos}</div>
 
         <Rodape />
       </div>
