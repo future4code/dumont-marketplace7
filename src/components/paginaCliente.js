@@ -3,7 +3,7 @@ import logo from "../img/Logo.png";
 import styled from "styled-components";
 import { Button, Typography, Grid, IconButton } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-// import { Filters } from './components/filtro';
+import Filtro from './filtro';
 import HomeIcon from '@material-ui/icons/Home';
 import axios from 'axios'
 import Products from './Products';
@@ -13,6 +13,30 @@ import Rodape from "./Rodape"
 
 
 export default class PaginaCliente extends Component {
+  state = {
+    filtroMinimo: '0',
+    filtroMaximo: '200',
+    filtroNome: 'Item',
+    filtroCategoria: 'Item',
+  }
+
+  onChangeFiltroMinimo = (event) => {
+    this.setState({filtroMinimo: event.target.value})
+  }
+
+  onChangeFiltroMaximo = (event) => {
+    this.setState({filtroMaximo: event.target.value})
+  }  
+
+  onChangeFiltroNome = (event) => {
+    this.setState({filtroNome: event.target.value})
+  }
+  
+  onChangeFiltroCategoria = (event) => {
+    this.setState({filtroCategoria: event.target.value})
+  }
+  
+  
   render() {
 
     return (  
@@ -39,11 +63,19 @@ export default class PaginaCliente extends Component {
         </Button>
       </NavWrapper>
       
-      {/* FILTRO AQUI */}
+      <FiltroContainer>
 
-  
-      
-      {/* FILTRO ^^*/}
+        filtroMinimo={this.state.filtroMinimo}
+        filtroMaximo={this.state.filtroMaximo}
+        filtroNome={this.state.filtroNome}
+        filtroCategoria={this.state.filtroCategoria}
+
+        onChangeFiltroMinimo={this.filtroMinimo}
+        onChangeFiltroMaximo={this.filtroMaximo}
+        onChangeFiltroNome={this.filtroNome}
+        onChangeFiltroCategoria={this.filtroCategoria}
+    
+      </FiltroContainer>
 
       <Grid item container>
         <Grid item xs={false} sm={2}/>
@@ -108,4 +140,8 @@ const SearchBtn = styled.button`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const FiltroContainer = styled.div`
+    border: 1px solid black;
 `;

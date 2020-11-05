@@ -1,45 +1,59 @@
 import React from 'react'
-import SearchIcon from "@material-ui/icons/Search";
+import styled from "styled-components";
 
-export class filtro extends React.Component {
+export default class Filtro extends React.Component {
     render() {
-        return
-        <Filtros>
+        return <FiltroContainer>
 
             <h3>Filtros</h3>
 
-            <minimo>
+            <InputContainer>
                 Valor mínimo:
                 <input
                 type= "number"
-                value= ""
+                value= {this.props.filtroMinimo}
+                onChange={this.props.onChangeFiltroMinimo}
                 />
-            </minimo>
+            </InputContainer>
 
-            <maximo>
+            <InputContainer>
                 Valor máximo:
                 <input
                 type= "number"
-                value= ""
+                value= {this.props.filtroMaximo}
+                onChange={this.props.onChangeFiltroMaximo}
                 />
-            </maximo>
+            </InputContainer>
 
-            <categoria>
-                Vategoria:
+            <InputContainer>
+                Nome:
                 <input
                 type= "text"
-                value= ""
+                value= {this.props.filtroNome}
+                onChange={this.props.onChangeFiltroNome}
                 />
-            </categoria>
+            </InputContainer>
 
-            <nome>
+            <InputContainer>
                 Categoria:
                 <input
                 type= "text"
-                value= ""
+                value= {this.props.filtroCategoria}
+                onChange={this.props.onChangeFiltroCategoria}
                 />
-            </nome>
+            </InputContainer>
 
-        </Filtros>
+        </FiltroContainer>
     }
 }
+
+const FiltroContainer = styled.div`
+    border: 1px solid black;
+`
+const InputContainer = styled.label`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    padding: 8px;
+`
