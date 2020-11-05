@@ -4,7 +4,6 @@ import './App.css';
 import PaginaCliente from './components/paginaCliente'
 import PaginaInicial from './components/paginaInicial'
 import PaginaFornecedor from './components/paginaFornecedor'
-import Navbar from './components/paginaCliente';
 import styled from 'styled-components'
 
 
@@ -12,6 +11,10 @@ class App extends React.Component {
   state = {
     telaAtual: "inicial"
   };
+
+  irParaPaginaInicial = () => {
+    this.setState({ telaAtual: "inicial" })
+  }
 
   irParaCliente = () => {
     this.setState({ telaAtual: "cliente" })
@@ -27,7 +30,7 @@ class App extends React.Component {
         case "inicial":
           return <PaginaInicial botaoCliente={this.irParaCliente} botaoFornecedor={this.irParaFornecedor}/>
         case "cliente":
-          return <Navbar />;
+          return <PaginaCliente irParaPaginaInicial={this.irParaPaginaInicial} />;
         case "fornecedor":
           return <PaginaFornecedor />;
         default:
