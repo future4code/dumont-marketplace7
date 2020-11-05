@@ -5,6 +5,8 @@ import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
 import { FilterNone } from "@material-ui/icons";
+import Rodape from "./Rodape";
+import { Button, Typography } from "@material-ui/core";
 
 const NavWrapper = styled.nav`
   display: flex;
@@ -148,9 +150,7 @@ export default class Navbar extends Component {
           </SearchBar>
         </NavWrapper>
 
-        <h1>
-          Seja bem vindo !! fique a vontade para colocar seus produtos no site.
-        </h1>
+        <h1>Cadastrar produtos</h1>
         <DivisaoProdutos>
           <ul>
             <li>
@@ -212,6 +212,87 @@ export default class Navbar extends Component {
             </li>
           </ul>
         </DivisaoProdutos>
+        <section className="secao3">
+          <ul>
+            <li>
+              <input
+                placeholder="Nome"
+                value={this.state.nome}
+                onChange={this.onChangeNome}
+              />
+            </li>
+
+            <li>
+              <input
+                placeholder="Descrição"
+                value={this.state.descricao}
+                onChange={this.onChangeDescricao}
+              />
+            </li>
+            <li>
+              <input
+                type="number"
+                placeholder="Valor"
+                value={this.state.preco}
+                onChange={this.onChangePreco}
+              />{" "}
+            </li>
+
+            <div className="selecionarPagamento">
+              <li>
+                <select name="opcoes" id="select" placeholder="Opção Pagamento">
+                  <option value="">Selecionar</option>
+                  <option value="">Boleto</option>
+                  <option value="1">Cartão</option>
+                </select>
+              </li>
+            </div>
+
+            <div className="selecionarCategoria">
+              <li>
+                <select name="opcoes" id="select" placeholder="Categoria">
+                  <option value="">Selecionar</option>
+                  <option value="">Casa</option>
+                  <option value="1">Jardim</option>
+                  <option value="2">Festa</option>
+                </select>
+              </li>
+            </div>
+
+            <li>
+              <input
+                placeholder="Url das fotos"
+                value={this.state.fotos}
+                onChange={this.onChangeFotos}
+              />
+            </li>
+            <li>
+              <input
+                type="number"
+                size="20"
+                maxlength="50"
+                height="20px"
+                placeholder="Número de parcelas"
+                value={this.state.numeroParcelas}
+                onChange={this.onChangeNumeroParcelas}
+              />
+            </li>
+          </ul>
+        </section>
+
+        <Button
+          className="buttonCadastrar"
+          variant="contained"
+          size="medium"
+          color="primary"
+          onClick={this.props.botaoFornecedor}
+        >
+          Cadastrar produto
+        </Button>
+
+        <div>{renderizaTodosProdutos}</div>
+
+        <Rodape />
       </div>
     );
   }

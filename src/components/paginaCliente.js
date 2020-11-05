@@ -1,15 +1,27 @@
 import React, { Component } from "react";
 import logo from "../img/Logo.png";
 import styled from "styled-components";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography, Grid, IconButton } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+// import { Filters } from './components/filtro';
+import HomeIcon from '@material-ui/icons/Home';
+import axios from 'axios'
+import Products from './Products';
+import { makeStyles } from '@material-ui/styles'
+import Rodape from "./Rodape"
 
-export default class Navbar extends Component {
+
+
+export default class PaginaCliente extends Component {
   render() {
-    return (
-      <NavWrapper>
-        <NavLogo src={logo} alt="Página Inicial" className="navbar-brand" />
 
+    return (  
+      <Grid container direction='column'>
+      <NavWrapper>
+        <NavLogo onClick={this.props.irParaPaginaInicial} src={logo} alt="Página Inicial" className="navbar-brand" />
+        <IconButton onClick={this.props.irParaPaginaInicial} >
+          <HomeIcon/>
+        </IconButton>
         <ul>
           <li>Produtos</li>
         </ul>
@@ -26,6 +38,23 @@ export default class Navbar extends Component {
           Ver carrinho
         </Button>
       </NavWrapper>
+      
+      {/* FILTRO AQUI */}
+
+  
+      
+      {/* FILTRO ^^*/}
+
+      <Grid item container>
+        <Grid item xs={false} sm={2}/>
+          <Grid item xs={12} sm={8}>
+            <Products/>
+          </Grid>
+
+        <Grid item xs={false} sm={2}/>
+      </Grid>
+       <Rodape />
+      </Grid>
     );
   }
 }
@@ -34,6 +63,7 @@ const NavWrapper = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  position: static;
 
   background: #f3940c;
   li {
@@ -53,6 +83,9 @@ const NavLogo = styled.img`
   height: 10vh;
   width: 5vw;
   margin: 1.2rem;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const SearchBar = styled.div`

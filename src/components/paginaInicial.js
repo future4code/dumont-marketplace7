@@ -1,58 +1,48 @@
-import React from "react";
+import React, { Component } from "react";
+import logo from "../img/Logo.png";
 import styled from "styled-components";
-import Logo from "../img/Logo.png";
-import { Button, Typography } from '@material-ui/core'
+import { Button, Typography } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
 
-const Head = styled.header`
-  display: flex;
-  text-align:center;
-  align-items:center;
-  margin-left:600px;
-
-`;
-
-const Titulo = styled.h1`
-  width: 100%;
-  padding: 10px;
-  margin:0;
-  text-align: center;
-  border-top: 4px solid #5ce;
-  background-color: #f3940c;
-  color: #ffffff;
-  font-family: "Lora", serif;
-  font-size: 2em;
-`;
-
-const ImagemLogo = styled.img`
-display:flex;
-align-items:center;
-width: 150px;
-height: 150px;
-text-align:center;
-margin:0;
- 
-`;
-
-class PaginaInicial extends React.Component {
+export default class Navbar extends Component {
   render() {
     return (
       <div>
-        <Head>
-        <ImagemLogo src={Logo} alt="Logo do Elo4" />
-       
-        </Head>
-        <Titulo>Seja muito bem vindo a Elo4 !!!</Titulo>
-<section>    
-<Button variant='contained' size='medium' color='primary' onClick={this.props.botaoFornecedor}>Fornecedor
-</Button>
-</section>
-<section>
-<Button variant='contained' size='medium' color='primary' onClick={this.props.botaoCliente}>Cliente
-</Button>                   
-</section> 
-      </div>
+      <NavWrapper>
+        <NavLogo src={logo} alt="Página Inicial" className="navbar-brand" />
+        <section className='secao1'>   
+        <Button className ='buttonEntrada' variant='contained' size='medium' color='primary' onClick={this.props.botaoFornecedor}>Fornecedor
+        </Button>
+        </section>
+        <section className='secao2'>
+        <Button className ='buttonEntrada'variant='contained' size='medium' color='primary' onClick={this.props.botaoCliente}>Cliente
+        </Button>                   
+        </section>
+        </NavWrapper>
+        </div>
     );
   }
 }
 
-export default PaginaInicial;
+const NavWrapper = styled.nav`
+  display: flex;
+  background: #f3940c;
+  li {
+    list-style: none;
+    margin: 1.2rem;
+    color: white !important;
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+`;
+
+const NavLogo = styled.img`
+ width:55%
+  
+`;
+
+    
