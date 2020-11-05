@@ -30,9 +30,9 @@ class App extends React.Component {
         case "inicial":
           return <PaginaInicial botaoCliente={this.irParaCliente} botaoFornecedor={this.irParaFornecedor}/>
         case "cliente":
-          return <PaginaCliente irParaPaginaInicial={this.irParaPaginaInicial} />;
+          return <PaginaCliente irParaCliente={this.irParaCliente} irParaPaginaInicial={this.irParaPaginaInicial} />;
         case "fornecedor":
-          return <PaginaFornecedor />;
+          return <PaginaFornecedor irParaCliente={this.irParaCliente}/>;
         default:
           return <div>Página não encontrada</div>;
       }
