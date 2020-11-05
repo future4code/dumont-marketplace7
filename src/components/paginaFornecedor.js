@@ -5,6 +5,9 @@ import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
 import Rodape from "./Rodape";
+import { Button, Typography } from "@material-ui/core";
+
+
 
 const NavWrapper = styled.nav`
   display: flex;
@@ -159,76 +162,91 @@ export default class Navbar extends Component {
         </NavWrapper>
 
         <h1>
-          Seja bem vindo !! fique a vontade para colocar seus produtos no site.
+          Cadastrar produtos
         </h1>
-
+        <section className='secao3'>  
+        
         <ul>
           <li>
-            Nome:{" "}
+           
             <input
-              placeholder="Digite o nome do produto"
+              placeholder="Nome"
               value={this.state.nome}
-              onChange={this.onChangeNome}
-            />{" "}
-            <button onClick={this.postarProdutos}>Adicionar</button>
+              onChange={this.onChangeNome} />
+                   
           </li>
+
           <li>
-            Descrição:{" "}
+         
             <input
-              placeholder="Digite a descrição do produto"
+              placeholder="Descrição"
               value={this.state.descricao}
               onChange={this.onChangeDescricao}
-            />{" "}
-            <button>Adicionar</button>
+            />
+           
           </li>
           <li>
-            Preço R$ :{" "}
-            <input
-              placeholder="Digite o preço do produto"
+         
+            <input type='number'
+              placeholder="Valor"
               value={this.state.preco}
               onChange={this.onChangePreco}
             />{" "}
-            <button>Adicionar</button>
+           
           </li>
+          
+          <div className='selecionarPagamento'>    
           <li>
-            Método de pagamento:{" "}
-            <input
-              placeholder="Digite o método de pgto"
-              value={this.state.metodoPgto}
-              onChange={this.onChangeMetodoPgto}
-            />{" "}
-            <button>Adicionar</button>
+          <select name="opcoes" id="select" placeholder="Opção Pagamento">
+          <option value="">Selecionar</option>
+          <option value="">Boleto</option>
+          <option value="1">Cartão</option>
+          </select>
+          </li> 
+          </div>
+          
+          <div className='selecionarCategoria'>
+          <li>
+          <select name="opcoes" id="select" placeholder="Categoria">
+          <option value="">Selecionar</option>
+          <option value="">Casa</option>
+          <option value="1">Jardim</option>
+          <option value="2">Festa</option>
+          </select>
           </li>
-          <li>
-            Categoria :{" "}
+          </div>
+
+           <li>
+       
             <input
-              placeholder="Digite o nome da categoria"
-              value={this.state.categoria}
-              onChange={this.onChangeCategoria}
-            />{" "}
-            <button>Adicionar</button>
-          </li>
-          <li>
-            Fotos :{" "}
-            <input
-              placeholder="Ponha a url das fotos"
+              placeholder="Url das fotos"
               value={this.state.fotos}
               onChange={this.onChangeFotos}
-            />{" "}
-            <button>Adicionar</button>
+            />
+            
           </li>
           <li>
-            Número de parcelas :{" "}
-            <input
-              placeholder="Digite o número de parcelas"
-              value={this.state.numeroParcelas}
+        
+            <input type='number'
+              size="20" maxlength="50" height="20px"
+              placeholder="Número de parcelas"
+              value ={this.state.numeroParcelas}
               onChange={this.onChangeNumeroParcelas}
-            />{" "}
-            <button>Adicionar</button>
+            />
+         
           </li>
-        </ul>
+          </ul>
+
+     
+         </section>    
+  
+       <Button className='buttonCadastrar'variant='contained' size='medium' color='primary' onClick={this.props.botaoFornecedor}>Cadastrar produto
+       </Button>
+
         <div>{renderizaTodosProdutos}</div>
+       
         <Rodape />
+      
       </div>
     );
   }
