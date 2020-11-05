@@ -3,29 +3,28 @@ import logo from "../img/Logo.png";
 import styled from "styled-components";
 import { Button, Typography } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+// import { Filters } from './components/filtro';
 
 export default class Navbar extends Component {
   render() {
     return (
-      <NavWrapper>
-        <NavLogo src={logo} alt="Página Inicial" className="navbar-brand" />
-
-        <ul>
-          <li>Produtos</li>
-        </ul>
-
-        <SearchBar>
-          <SearchInput></SearchInput>
-
+     
+        <NavWrapper>
+          <NavLogo src={logo} alt="Página Inicial" className="navbar-brand" />
+          <ul>
+            <li>Produtos</li>
+          </ul>
+          <SearchBar>
+            <SearchInput></SearchInput>
           <SearchBtn>
             <SearchIcon />
           </SearchBtn>
-        </SearchBar>
-
-        <Button variant="contained" size="medium" color="primary">
-          Ver carrinho
-        </Button>
-      </NavWrapper>
+          </SearchBar>
+          <Button variant="contained" size="medium" color="primary">
+            Ver carrinho
+          </Button>
+        </NavWrapper>
+        
     );
   }
 }
