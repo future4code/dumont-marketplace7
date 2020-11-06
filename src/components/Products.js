@@ -13,7 +13,7 @@ export default function Products() {
                     price="100,00"
                     imgSrc="https://images.tcdn.com.br/img/img_prod/615061/peixe_tilapia_de_parede_em_alto_relevo_para_decoracao_310_1_20180327215059.jpg"
                     description="lore ipsum"
-                    category="Peixe"
+                    category="casa"
                     />
                 </Grid>
 
