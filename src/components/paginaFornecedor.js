@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import logo from "../img/Logo.png";
 import styled from "styled-components";
-// import { Button, Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
-import { FilterNone } from "@material-ui/icons";
+// import { FilterNone } from "@material-ui/icons";
 import Rodape from "./Rodape";
-import { Button, Typography } from "@material-ui/core";
 
 const NavWrapper = styled.nav`
   display: flex;
@@ -31,7 +30,10 @@ const NavLogo = styled.img`
   width: 5vw;
   margin: 1.2rem;
 `;
-
+const SearchBar = styled.div`
+  display: flex;
+  width: 50%;
+`;
 const SearchInput = styled.input`
   border-radius: 5px;
   width: 100%;
@@ -47,15 +49,10 @@ const SearchBtn = styled.button`
     cursor: pointer;
   }
 `;
-const DivisaoProdutos = styled.div`
-  display: flex;
-  justify-content: space-around;
-  outline: none;
-`;
 
 export default class Navbar extends Component {
   state = {
-    pegarProdutos: [],
+    dadosMeuBanco: [],
     nome: "",
     descricao: "",
     preco: "",
@@ -72,17 +69,17 @@ export default class Navbar extends Component {
       price: Number(this.state.preco),
       paymentMethod: this.state.metodoPgto,
       category: this.state.categoria,
-      photos: this.state.fotos,
+      photos: [this.state.fotos],
       installments: Number(this.state.numeroParcelas),
     };
-    console.log(body);
+
     axios
       .post(
-        "https://us-central1-labenu-apis.cloudfunctions.net/eloFourOne/products/",
+        "https://us-central1-labenu-apis.cloudfunctions.net/eloFourOne/products",
         body
       )
-      .then((res) => {
-        console.log("res", res.name);
+      .then((response) => {
+        console.log("res", response);
         this.setState({ nome: "" });
         this.setState({ descricao: "" });
         this.setState({ preco: "" });
@@ -94,6 +91,14 @@ export default class Navbar extends Component {
       .catch((error) => {
         console.log(error.message);
       });
+  };
+
+  pegandoProdutos = () => {
+    const apiUrl =
+      "https://us-central1-labenu-apis.cloudfunctions.net/eloFourOne/products";
+    axios.get(apiUrl).then((response) => {
+      this.setState({ dadosMeuBanco: response.data });
+    });
   };
 
   onChangeNome = (event) => {
@@ -108,9 +113,6 @@ export default class Navbar extends Component {
     this.setState({ preco: event.target.value });
   };
 
-  onChangeMetodoPgto = (event) => {
-    this.setState({ metodoPgto: event.target.value });
-  };
   onChangeCategoria = (event) => {
     this.setState({ categoria: event.target.value });
   };
@@ -123,22 +125,35 @@ export default class Navbar extends Component {
     this.setState({ numeroParcelas: event.target.value });
   };
 
+  onChangeMetodoPagamento = (event) => {
+    this.setState({ metodoPgto: event.target.value });
+  };
+
   render() {
-    // console.log("asdasd", )
-    // const trazTodosProdutos = this.state.pegarProdutos.map((products) => {
-    //   return <p key={products.id}>{products.name} {products.description}
-    //   {products.price} {products.category} {products.photos} {products.installments}
-    //   </p>;
-    // });
+    const trazTodosProdutos = this.state.dadosMeuBanco.map((dados) => {
+      return (
+        <p key={dados.id}>
+          {dados.name} {dados.description}
+          {dados.price} {dados.category} {dados.photos} {dados.installments}
+        </p>
+      );
+    });
+
     return (
       <div>
         <NavWrapper>
           <NavLogo src={logo} alt="Página Inicial" className="navbar-brand" />
 
           <ul>
-            <li onClick={this.props.irParaCliente}>Produtos</li>
+            <li>Produtos</li>
           </ul>
+          <SearchBar>
+            <SearchInput></SearchInput>
 
+            <SearchBtn>
+              <SearchIcon />
+            </SearchBtn>
+          </SearchBar>
         </NavWrapper>
 
         <h1>Cadastrar produtos</h1>
@@ -163,29 +178,39 @@ export default class Navbar extends Component {
             <li>
               <input
                 type="number"
-                placeholder="Preço"
+                placeholder="Valor"
                 value={this.state.preco}
                 onChange={this.onChangePreco}
-              />
+              />{" "}
             </li>
 
             <div className="selecionarPagamento">
               <li>
-                <select value={this.state.metodoPgto} onChange={this.onChangeMetodoPgto} name="opcoes" id="select" placeholder="Opção Pagamento">
-                  <option>Selecionar</option>
-                  <option>Boleto</option>
-                  <option>Cartão</option>
+                <select
+                  name="opcoes"
+                  id="select"
+                  placeholder="Opção Pagamento"
+                  onChange={this.onChangeMetodoPagamento}
+                >
+                  <option value="">Selecionar</option>
+                  <option value="boleto">Boleto</option>
+                  <option value="cartao">Cartão</option>
                 </select>
               </li>
             </div>
 
             <div className="selecionarCategoria">
               <li>
-                <select value={this.state.categoria} onChange={this.onChangeCategoria} name="opcoes" id="select" placeholder="Categoria">
-                  <option>Selecionar</option>
-                  <option>Casa</option>
-                  <option>Jardim</option>
-                  <option>Festa</option>
+                <select
+                  name="opcoes"
+                  id="select"
+                  placeholder="Categoria"
+                  onChange={this.onChangeCategoria}
+                >
+                  <option value="">Selecionar</option>
+                  <option value="casa">Casa</option>
+                  <option value="jardim">Jardim</option>
+                  <option value="festa">Festa</option>
                 </select>
               </li>
             </div>
@@ -200,9 +225,9 @@ export default class Navbar extends Component {
             <li>
               <input
                 type="number"
-                size="20"
-                maxlength="50"
-                height="20px"
+                // size="20"
+                // maxlength="50"
+                // height="20px"
                 placeholder="Número de parcelas"
                 value={this.state.numeroParcelas}
                 onChange={this.onChangeNumeroParcelas}
@@ -216,11 +241,11 @@ export default class Navbar extends Component {
           variant="contained"
           size="medium"
           color="primary"
-          onClick={this.props.botaoFornecedor}
+          onClick={this.postarProdutos}
         >
           Cadastrar produto
         </Button>
-
+        <div>{trazTodosProdutos}</div>
         <Rodape />
       </div>
     );
