@@ -9,7 +9,7 @@ import axios from 'axios'
 import Products from './Products';
 import { makeStyles } from '@material-ui/styles'
 import Rodape from "./Rodape"
-
+import Ordenar from './Ordenar'
 
 
 export default class PaginaCliente extends Component {
@@ -26,6 +26,8 @@ export default class PaginaCliente extends Component {
           <li onClick={this.props.irParaCliente}>Produtos</li>
         </ul>
 
+     
+
         <SearchBar>
           <SearchInput></SearchInput>
 
@@ -37,11 +39,14 @@ export default class PaginaCliente extends Component {
         <Button variant="contained" size="medium" color="primary">
           Ver carrinho
         </Button>
+      
       </NavWrapper>
       
       {/* FILTRO AQUI */}
-
-  
+<section className='ordenar'>
+<Ordenar />
+</section>
+    
       
       {/* FILTRO ^^*/}
 
@@ -53,6 +58,7 @@ export default class PaginaCliente extends Component {
 
         <Grid item xs={false} sm={2}/>
       </Grid>
+    
       <Footer>
                 <h3>REDES SOCIAIS</h3>
                 <a href="">
@@ -64,6 +70,7 @@ export default class PaginaCliente extends Component {
                 <a href="">
                     <img src="http://www.assistenciasocial.al.gov.br/configuracao/imagens/lateral/twitter-icon.png/image" alt="imagem-twitter" width="50px" />
                 </a>
+            
             </Footer>
       </Grid>
       
